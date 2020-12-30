@@ -146,21 +146,27 @@ if __name__ == "__main__":
         viablePoints = []   
         for region_file in region_files: 
             try:
-                viablePointsRegion = pickle.load(open(region_file, "rb"))   
+                viablePointsRegion = pickle.load(open(region_file, "rb"))
                 print(len(viablePointsRegion))   
                 viablePoints.extend(viablePointsRegion)
             except:
                 print("Load of " + region_file + " failed!")
         print("Number of points: ",len(viablePoints))
-        region = Region(viablePoints, model, "region")              
-        model_regions.append(region)                                                                        
-        
+        region = Region(viablePoints, model, "region")
+        model_regions.append(region)
+
+        f = open("results_robustness\\params2.csv", "w")
+        f.write("$\\delta_L$,$\\gamma_L$,$n_y$,$\\theta_L$,$\\eta_x$,$\\omega_x$,$m_x$,$\\delta_x$,$\\gamma_x$,$\\theta_x$,$\\rho_x$\n")
+        for point in viablePoints:
+            f.write(",".join(map(str,list(point))) + "\n")
+        f.close()
+
     
 
 
  
     #df = getParamDistrib(file_name="results_robustness\\params.csv")
-    df = pd.read_csv("results_robustness\\params.csv")
+    df = pd.read_csv("results_robustness\\params2.csv")
     plotParamsdf(df)
 
     #test_random_point()
