@@ -117,8 +117,9 @@ if __name__ == "__main__":
 
     
     
-    base_paths_opt = ["results_optimization\\cblb", "results_optimization\\0cblb"]
-    
+    # base_paths_opt = ["results_optimization\\cblb", "results_optimization\\0cblb"]
+    base_paths_opt = ["results_optimization\\cblb"]
+
 
     #
     # END OF SETTINGS
